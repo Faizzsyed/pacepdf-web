@@ -2,6 +2,8 @@
 
 The independent React + Vite website for the PacePDF Android app. This project lives at `C:\Users\Faiz\OneDrive\Desktop\ALLPROJECTS\pacepdf-web`. The neighboring Flutter app and the existing portfolio were not modified.
 
+Live website: **https://pacepdf-web.vercel.app/**. Public repository: **https://github.com/Faizzsyed/pacepdf-web**. The independent Vercel project is `pacepdf-web`, connected to the repository's `main` production branch.
+
 ## Run locally
 
 Requires Node.js 22.12+ (tested with Node 24.14.1) and npm.
@@ -50,29 +52,34 @@ The existing [Privacy Policy](https://isa-shaikh-app.web.app/privacy/pacepdf) UR
 
 The public Play listing could not be verified. `product.playUrl` remains `null`; CTAs lead to the on-page closed-testing status and feature section. To enable a verified public listing later, set that one property to the actual URL. No download, price, review or release-date claims are included.
 
-## Deploy as a NEW Vercel project
+## Production deployment
 
-The CLI reported **Logged out**. No Vercel project was created, linked or deployed during implementation. No existing portfolio deployment was touched. Authentication is the remaining action that needs the account owner.
+The new independent Vercel project `pacepdf-web` is connected to `Faizzsyed/pacepdf-web` with production branch `main`. Pushes to `main` trigger Vercel's GitHub integration; no deployment token or GitHub Actions secret is required in this repository. Other branches use preview deployments. The existing portfolio project was not linked, reconfigured or deployed.
 
-1. From this website folder, run `npx vercel login` and complete Vercel's sign-in in your own browser.
-2. Run `npx vercel link`. Choose your account/team, choose **create a new project**, and give the independent project a PacePDF-specific name. Do not select the existing portfolio project.
-3. The framework is Vite, build command is `npm run build`, and output directory is `dist` (configured in `vercel.json`). No SPA rewrite is required: the site uses one page and real anchor targets.
-4. Enable access to system environment variables in the new project's environment settings. The production build reads the actual `VERCEL_PROJECT_PRODUCTION_URL` for canonical, sitemap and social URLs. [Vercel documents this production-domain variable here.](https://vercel.com/docs/environment-variables/system-environment-variables#vercel_project_production_url)
-5. If using a custom domain, add and verify it, then set `SITE_URL` in the **Production** environment to that exact HTTPS origin. It must contain no path, query or trailing content beyond `/`. This explicit origin takes precedence over Vercel's default domain.
-6. Run `npx vercel --prod`. Confirm the printed deployment URL and final production domain. Do not reuse an old `.vercel` project binding copied from another project.
-7. Inspect the live source: canonical and Open Graph URLs must match the final domain, robots must allow crawling, and `/sitemap.xml` must contain the same canonical homepage URL. Run the browser and Lighthouse checks against the live URL.
+Production settings are **Vite**, repository root **`.`**, Node **24.x**, build command **`npm run build`**, output **`dist`**. `SITE_URL` is set in Vercel's Production environment to **`https://pacepdf-web.vercel.app`**. Access to system environment variables is enabled. The build derives canonical, sitemap and social URLs from this exact origin; [Vercel's production-domain system variable](https://vercel.com/docs/environment-variables/system-environment-variables#vercel_project_production_url) provides the fallback.
+
+To publish future website changes, commit only relevant files and push `main`. Verify the corresponding deployment reaches **Ready** in [the Vercel project](https://vercel.com/faizusayed256-6788s-projects/pacepdf-web), then check the live homepage, robots and sitemap. No SPA rewrite is needed; the site uses one page and real anchor targets.
+
+To link a fresh local checkout of this same repository:
+
+```powershell
+vercel login
+vercel link --yes --scope faizusayed256-6788s-projects --project pacepdf-web
+```
+
+If the production domain changes, verify the new domain first, update `SITE_URL` in Vercel's Production environment and redeploy. The website source does not need to change. Keep `.vercel/`, all `.env*` files, `node_modules`, generated output and temporary reports excluded from Git. Never reuse another project's local Vercel binding.
 
 **Local and Vercel preview builds are intentionally noindex.** Without a verified domain, no fabricated canonical URL is emitted; `robots.txt` disallows crawling and `sitemap.xml` has an empty URL set. A Vercel production build fails if no production origin is available. With the actual origin configured, the build generates `index, follow`, canonical, absolute social-image URLs, `Allow: /` and a populated sitemap. Preview deployments remain noindex even if `SITE_URL` is set.
 
 For a production build on your machine after the actual domain is known:
 
 ```powershell
-$env:SITE_URL = 'https://YOUR-ACTUAL-PRODUCTION-DOMAIN'
+$env:SITE_URL = 'https://pacepdf-web.vercel.app'
 npm run build
 Remove-Item Env:\SITE_URL
 ```
 
-That domain is an instruction placeholder, not a claimed deployed address. Environment values are read from the build process; `.env.example` documents the variable, but the prerender script does not automatically load `.env` files.
+Environment values are read from the build process. The prerender script does not automatically load `.env` files. Local environment files are excluded from the public repository.
 
 ## Google Search Console after deployment
 
@@ -97,5 +104,7 @@ The browser scripts use installed Google Chrome via Playwright's `channel: 'chro
 `npm test` checks rendered HTML, exact metadata, verified feature names, all local assets, navigation, FAQ keyboard behavior, filters, lightbox/focus restoration, gallery keyboard controls, theme persistence, reduced motion, no-JavaScript content, console/network errors, horizontal overflow at 320–1920px and automated WCAG checks. Automated checks complement manual review; they are not a complete accessibility certification.
 
 Local Lighthouse mobile result: **Performance 99 / Accessibility 100 / Best Practices 100 / SEO 66**. The SEO loss is the intentional local `noindex`/robots restriction; the final production site must be checked again with its real domain and crawlability enabled. These are local measurements, not guaranteed production scores.
+
+The deployed production site was checked on 13 October 2026: **Performance 99 / Accessibility 100 / Best Practices 100 / SEO 100**. Live Chrome tests passed at 320–1920px, with zero automated WCAG violations in desktop light, desktop dark and mobile checks. Static content, exact SEO copy, both developer credits, `index, follow`, canonical, Open Graph/Twitter URLs, JSON-LD and HTTP 200 responses for robots/sitemap/social image were verified. Lighthouse is a measured result, not an indexing or ranking guarantee.
 
 Browser reports, light/dark screenshots and the Lighthouse HTML/JSON report are in `artifacts/` (excluded from deployment and Git). See `IMPLEMENTATION_REPORT.md` for the completed delivery checklist.
