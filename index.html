@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#d9152a" />
+    <link rel="preload" href="/assets/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <title>PacePDF – Android PDF Tools | Faiz Sayyed</title>
+    <meta
+      name="description"
+      content="Explore PacePDF, an Android PDF app for reading, compressing, merging, splitting, signing and organizing PDFs. Co-created by Faiz Sayyed."
+    />
+    <!--seo-head-->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <script>
+      try {
+        const saved = localStorage.getItem('pacepdf-theme');
+        const dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
