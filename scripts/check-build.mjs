@@ -23,17 +23,28 @@ for (const text of [
   'Co-Creator &amp; Developer',
   'Scan to PDF',
   'OCR is coming soon',
-  'Google Play Closed Testing',
+  'Now Available on Google Play',
 ])
   assert(html.includes(text), `Missing ${text}`);
 assert(!/<meta name="description"[^>]*Isa Shaikh/.test(html));
 assert(!/<title>[^<]*Isa Shaikh/.test(html));
 assert(!html.includes('<!--app-html-->'));
 assert(html.includes('<main'));
-assert(!html.includes('play.google.com/store/apps/'));
+assert.equal(product.playUrl, 'https://play.google.com/store/apps/details?id=com.pacepdf.app');
+assert(!/closed[ -]testing|public download link will appear/i.test(html));
+assert.equal(
+  (
+    html.match(/href="https:\/\/play.google.com\/store\/apps\/details\?id=com\.pacepdf\.app"/g) ||
+    []
+  ).length,
+  4,
+);
 assert(html.includes('https://isa-shaikh-app.web.app/privacy/pacepdf'));
 const data = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
 assert.equal(data['@type'], 'SoftwareApplication');
+assert.equal(data.operatingSystem, 'Android');
+assert.equal(data.downloadUrl, product.playUrl);
+assert.equal(data.installUrl, product.playUrl);
 assert(!data.aggregateRating && !data.offers && !data.datePublished);
 assert.equal(data.author.length, 2);
 for (const match of html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)) await access(`dist${match[1]}`);

@@ -1,12 +1,12 @@
 export const product = {
   name: 'PacePDF',
-  playUrl: null,
-  availability: 'Currently in Closed Testing',
+  playUrl: 'https://play.google.com/store/apps/details?id=com.pacepdf.app',
+  availability: 'Now Available on Google Play',
   privacyUrl: 'https://isa-shaikh-app.web.app/privacy/pacepdf',
   contactUrl: 'mailto:isashaikh2005@gmail.com',
   title: 'PacePDF – Android PDF Tools | Faiz Sayyed',
   description:
-    'Explore PacePDF, an Android PDF app for reading, compressing, merging, splitting, signing and organizing PDFs. Co-created by Faiz Sayyed.',
+    'Get PacePDF on Google Play for Android. Read, compress, merge, split, sign and organize PDFs. Co-created by Faiz Sayyed.',
 };
 
 export const navigation = [

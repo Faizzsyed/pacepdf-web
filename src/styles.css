@@ -408,6 +408,15 @@ section[id] {
 .hero-actions .button {
   font-size: 12px;
 }
+.play-badge {
+  display: inline-flex;
+  max-width: 100%;
+}
+.play-badge img {
+  display: block;
+  width: 188px;
+  height: auto;
+}
 .hero-meta {
   display: flex;
   align-items: center;
@@ -1518,7 +1527,8 @@ section[id] {
 .cta-status .status-dot {
   background: #fff;
 }
-.cta-copy .button {
+.cta-copy .button,
+.cta-copy .play-badge {
   margin-top: 16px;
   font-size: 11px;
 }

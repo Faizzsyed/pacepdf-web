@@ -32,7 +32,7 @@ export function Brand({ inverse = false }) {
 }
 
 export function Availability({ compact = false, className = '' }) {
-  if (product.playUrl)
+  if (compact)
     return (
       <a
         className={`button button-primary ${className}`}
@@ -46,10 +46,18 @@ export function Availability({ compact = false, className = '' }) {
       </a>
     );
   return (
-    <a className={`button button-primary ${className}`} href="#availability">
-      <Smartphone size={18} />
-      {compact ? 'Closed Testing' : product.availability}
-      <ArrowUpRight size={17} />
+    <a
+      className={`play-badge ${className}`}
+      href={product.playUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="/assets/google-play-badge.png"
+        width="646"
+        height="250"
+        alt="Get it on Google Play"
+      />
     </a>
   );
 }

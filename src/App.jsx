@@ -35,7 +35,7 @@ function Hero() {
         <div className="hero-copy">
           <span className="hero-kicker">
             <span className="status-dot" />
-            YOUR EVERYDAY PDF COMPANION
+            {product.availability}
           </span>
           <h1>
             Everything You
@@ -236,7 +236,7 @@ function Features() {
         </div>
         <p className="tools-footnote">
           <span className="status-dot" />
-          Tools shown are implemented in the current closed-testing app. OCR is coming soon.
+          Tools shown are implemented in the current app. OCR is coming soon.
         </p>
       </div>
     </section>
@@ -425,25 +425,16 @@ function FinalCTA() {
                 <span>Simplified.</span>
               </h2>
               <p>
-                Your everyday PDF toolkit is taking shape.
+                Your everyday PDF toolkit is ready to download.
                 <br />
-                Currently in Google Play closed testing.
+                Available on Google Play for Android.
               </p>
               <div className="cta-status">
                 <span className="status-dot" />
-                Google Play Closed Testing
+                {product.availability}
               </div>
-              {product.playUrl ? (
-                <Availability />
-              ) : (
-                <a className="button button-white" href="#features">
-                  Discover the toolkit
-                  <ArrowRight size={18} />
-                </a>
-              )}
-              <span className="cta-footnote">
-                A public download link will appear here when available.
-              </span>
+              <Availability />
+              <span className="cta-footnote">Download PacePDF for Android from Google Play.</span>
             </div>
             <div className="cta-art">
               <div className="cta-ring" aria-hidden="true" />
@@ -508,7 +499,10 @@ function Footer() {
               Contact
               <ArrowUpRight size={14} />
             </a>
-            <span>Currently in closed testing</span>
+            <a href={product.playUrl} target="_blank" rel="noopener noreferrer">
+              Get it on Google Play
+              <ArrowUpRight size={14} />
+            </a>
             <span>OCR · Coming soon</span>
           </div>
         </div>

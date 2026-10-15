@@ -202,7 +202,7 @@ export const faqs = [
   ],
   [
     'Is PacePDF available on Android?',
-    'Yes. PacePDF is built for Android using Flutter and native Android integrations. The app is currently in closed testing.',
+    'Yes. PacePDF is available on Google Play for Android, built using Flutter and native Android integrations.',
   ],
   [
     'What PDF tools does PacePDF provide?',
@@ -210,7 +210,7 @@ export const faqs = [
   ],
   [
     'Is PacePDF available on Google Play?',
-    'PacePDF is currently in Google Play closed testing. A public listing has not been verified, so this website does not provide a public download link. No public release date has been announced here.',
+    'Yes, PacePDF is available on Google Play for Android.',
   ],
   [
     'Does PacePDF require an internet connection?',

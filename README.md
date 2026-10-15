@@ -50,7 +50,7 @@ The approved `assets/branding/logo.png` is the only image copied from the Flutte
 
 The existing [Privacy Policy](https://isa-shaikh-app.web.app/privacy/pacepdf) URL is linked unchanged. No policy text was edited, no Terms were invented. Isa's LinkedIn and the contact email were verified from the reference page. The portfolio, GitHub, Isa website and policy returned HTTP 200. LinkedIn blocks automated access (HTTP 999); its links were retained from the user's supplied profile and the official reference.
 
-The public Play listing could not be verified. `product.playUrl` remains `null`; CTAs lead to the on-page closed-testing status and feature section. To enable a verified public listing later, set that one property to the actual URL. No download, price, review or release-date claims are included.
+PacePDF is now available on Google Play for Android: https://play.google.com/store/apps/details?id=com.pacepdf.app. `product.playUrl` supplies the navbar, mobile menu, hero, download section and footer links. The hero and download section use Google's official, unmodified Google Play badge. No pricing, ratings, review counts or download counts are claimed. Scanner qualifications and the upcoming OCR status remain unchanged.
 
 ## Production deployment
 
